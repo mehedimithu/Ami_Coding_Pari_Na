@@ -1,8 +1,8 @@
 
 
 
+import 'package:ami_coding_pari_na/data/rest_data.dart';
 import 'package:ami_coding_pari_na/models/user.dart';
-import 'package:ami_coding_pari_na/utils/restdata.dart';
 
 abstract class LoginPageContract {
   void onLoginSuccess(User user);
