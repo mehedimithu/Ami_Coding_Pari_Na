@@ -1,6 +1,4 @@
 
-
-
 import 'package:ami_coding_pari_na/models/user.dart';
 import 'package:ami_coding_pari_na/utils/network_util.dart';
 
