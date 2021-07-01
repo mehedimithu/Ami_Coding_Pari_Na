@@ -14,19 +14,19 @@ class _HomePageState extends State<HomePage> {
     return new Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        toolbarHeight: 120,
+        toolbarHeight: 80,
         backgroundColor: Colors.lightBlue,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(Icons.exit_to_app),
-          ),
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.all(8.0),
+        //     child: Icon(Icons.exit_to_app),
+        //   ),
+        // ],
         title: Text("Home"),
         leading: Padding(
           padding: const EdgeInsets.all(4.0),
           child: IconButton(
-            icon: Icon(Icons.apps),
+            icon: Icon(Icons.apps, color: Colors.white),
             onPressed: () => _scaffoldKey.currentState.openDrawer(),
           ),
         ),
