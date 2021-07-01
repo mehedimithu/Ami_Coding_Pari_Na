@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         new Text(
-          "Sqflite App Login",
+          "Login",
           textScaleFactor: 2.0,
         ),
         new Form(
@@ -96,7 +96,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
   @override
   void onLoginError(String error) {
-    // TODO: implement onLoginError
     _showSnackBar(error);
     setState(() {
       _isLoading = false;
@@ -105,7 +104,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
   @override
   void onLoginSuccess(User user) async {
-    // TODO: implement onLoginSuccess
     _showSnackBar(user.toString());
     setState(() {
       _isLoading = false;
