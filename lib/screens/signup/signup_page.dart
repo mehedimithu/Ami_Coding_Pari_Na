@@ -92,6 +92,7 @@ class _SignupPageState extends State<SignupPage> implements SignupPageContract {
       appBar: new AppBar(
         toolbarHeight: 80,
         title: new Text("AMi CoDing PAri Na!", style: TextStyle(color: Colors.white),),
+        centerTitle: true,
       ),
       key: scaffoldKey,
       body: new Container(

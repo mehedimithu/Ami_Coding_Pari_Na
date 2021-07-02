@@ -97,6 +97,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       appBar: new AppBar(
         toolbarHeight: 80,
         title: new Text("AMi CoDing PAri Na!", style: TextStyle(color: Colors.white),),
+        centerTitle: true,
       ),
       key: scaffoldKey,
       body: new Container(

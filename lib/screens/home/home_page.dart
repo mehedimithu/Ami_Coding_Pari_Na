@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
           "Home",
           style: TextStyle(color: Colors.white),
         ),
+        centerTitle: true,
         leading: Padding(
           padding: const EdgeInsets.all(4.0),
           child: IconButton(
