@@ -1,16 +1,16 @@
 
+
 import 'package:ami_coding_pari_na/data/database_helper.dart';
 import 'package:ami_coding_pari_na/models/user.dart';
-import 'package:ami_coding_pari_na/screens/signup/signup_page.dart';
+import 'package:ami_coding_pari_na/screens/signup/signup_view.dart';
 import 'package:flutter/material.dart';
-import 'login_view.dart';
 
-class LoginPage extends StatefulWidget {
+class SignupPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => new _LoginPageState();
+  _SignupPageState createState() => new _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> implements LoginPageContract {
+class _SignupPageState extends State<SignupPage> implements SignupPageContract {
   BuildContext _ctx;
   bool _isLoading = false;
   final formKey = new GlobalKey<FormState>();
@@ -18,10 +18,10 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
   String _username, _password;
 
-  LoginPagePresenter _presenter;
+  SignupPagePresenter _presenter;
 
-  _LoginPageState() {
-    _presenter = new LoginPagePresenter(this);
+  _SignupPageState() {
+    _presenter = new SignupPagePresenter(this);
   }
 
   void _submit() {
@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       setState(() {
         _isLoading = true;
         form.save();
-        _presenter.doLogin(_username, _password);
+        _presenter.doSignup(_username, _password);
       });
     }
   }
@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     _ctx = context;
     var loginBtn = new RaisedButton(
       onPressed: _submit,
-      child: new Text("Login"),
+      child: new Text("Signup"),
       color: Colors.green,
     );
     var loginForm = new Column(
@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       children: <Widget>[
         Padding(padding: EdgeInsets.all(20)),
         new Text(
-          "Login",
+          "Signup",
           textScaleFactor: 2.0,
         ),
         new Form(
@@ -81,15 +81,10 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
           ),
         ),
         loginBtn,
-        SizedBox(height: 10),
-        InkWell(child: Text("New user?"'\tSignup here'),
-          onTap: (){
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => SignupPage()));
-          },
-        ),
+        // SizedBox(height: 10),
+        // InkWell(child: Text("New user?"'\tSignup here'),
+        //   onTap: (){},
+        // ),
       ],
     );
 
@@ -123,6 +118,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     });
     var db = new DatabaseHelper();
     await db.saveUser(user);
-    Navigator.of(context).pushNamed("/home");
+    // Navigator.of(context).pushNamed("/login");
   }
 }

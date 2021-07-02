@@ -8,25 +8,34 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final formKey = new GlobalKey<FormState>();
+
+  TextEditingController _inputVal = TextEditingController();
+  TextEditingController _searchVal = TextEditingController();
+
+  var result;
+
+  khoj() {
+    List<String> values = _inputVal.text.split(",");
+    result = values.contains(_searchVal.text);
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 60,
         backgroundColor: Colors.lightBlue,
-        // actions: [
-        //   Padding(
-        //     padding: const EdgeInsets.all(8.0),
-        //     child: Icon(Icons.exit_to_app),
-        //   ),
-        // ],
-        title: Text("Home"),
+        title: Text(
+          "Home",
+          style: TextStyle(color: Colors.white),
+        ),
         leading: Padding(
           padding: const EdgeInsets.all(4.0),
           child: IconButton(
-            icon: Icon(Icons.apps, color: Colors.white),
+            icon: Icon(Icons.view_list, color: Colors.white, size: 30,),
             onPressed: () => _scaffoldKey.currentState.openDrawer(),
           ),
         ),
@@ -95,11 +104,14 @@ class _HomePageState extends State<HomePage> {
                         textScaleFactor: 1.5,
                         style: TextStyle(color: Colors.white),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                      },
                     ),
-
                     SizedBox(height: 10),
-
                     ListTile(
                       leading: Icon(Icons.image_outlined),
                       title: Text(
@@ -111,8 +123,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    ChobiDekhao()));
+                                builder: (context) => ChobiDekhao()));
                       },
                     ),
                   ],
@@ -122,9 +133,50 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: new Center(
-        child: new Text("Home Page"),
-      ),
+      body: Container(
+          margin: EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  controller: _inputVal,
+                  decoration: new InputDecoration(
+                    labelText: "Input",
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  controller: _searchVal,
+                  decoration: new InputDecoration(labelText: "Search"),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  readOnly: true,
+                  textAlign: TextAlign.center,
+                  decoration: new InputDecoration(
+                    labelText: "${result??''}",
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              RaisedButton(
+                onPressed: () {
+                  khoj();
+
+                },
+                color: Colors.green,
+                child: new Text(
+                  "Khoj",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              )
+            ],
+          )),
     );
   }
 }
